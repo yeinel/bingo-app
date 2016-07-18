@@ -1,0 +1,57 @@
+Un proyecto hecho para ayudarte a mejor tus probabilidades de ganar esos premios que siempre has querido ganar en el bingo, permitiendote jugar con la cantidad de cartones que desees al mismo tiempo.
+
+Simplemente crea tus cartones, llenalos y la aplicación buscará los números por ti.
+
+
+Cómo se juega?
+
+1- Compra tus cartones.
+2- Crea los cartones en la aplicación.
+3- Llena los cartones
+4- Selecciona el modo de juego... y a jugar.
+5- Ingresa el número que desees buscar en los cartones y presiona el boton de buscar.
+
+Cómo llenar los cartones?
+
+- Primero debes crear el carton y asignarle un nombre o identificador para que sepas que cartón debes mostrar cuando ganes.
+- Cada cartón tiene una barra de herramientas con tres botones, presionando el primer boton (lapiz), pondrás el carton en modo edición permitiendote agregar en cada espacio los números correspondientes al carton, los números se iran guardando automaticamente pero es mejor asegurarse de marcar la opción "finalizar edición" al terminar de llenar el cartón.
+
+Cómo cambiar el modo de juego?
+
+- En el menú de la esquina superior derecha podrás seleccionar entre los distintos 11 modos de juego:
+--- Cartón completo: Ganas cuando el(los) carton(es) este(n) completo(s)en su totalidad.
+--- 4 Esquinas: Ganas cuando se completen las cuatro esquinas
+--- Linea específica: Ganas cuando alguna linea ya sea vertical o horizontal esté completa.
+--- Columna específica: Ganas cuando una linea vertical o horizontal en especifico esté completa, ejemplo: ganas solamente si esta completa la fila 2
+--- Cualquier linea: Ganas cuando cualquier linea ya sea vertical o horizontal esté completa.
+--  Cualquier linea Horizontal: Ganas cuando cualquier linea horizontal esté completa
+--- Cualquier linea Vertical: Ganas cuando cualquier linea vertical esté completa
+--- Cualquier Diagonal: Ganas cuando cualquiera de las diagonales esté completa.
+--- Linea Diagonal SI-ID: Ganas solamente si la diagonal que va de la esquina superior izquierda a la esquina inferior derecha está completa.
+--- Linea Diagonal II-SD: Ganas solamente si la diagonal que va de la esquina inferior izquierda a la esquina superior derecha está completa.
+--- En X: Ganas solamente si ambas diagonales están completas
+
+Qué pasa si te equivocas en buscar un número y que se marcó en los cartones?
+
+- En el tab números en cola podrás ver los números que has ido buscando.
+- Cada uno de estos números tiene la opción de "Limpiar de cartones" con lo cuál podrás revertir la búsqueda de ese número en todos los cartones, y limpiando el número de los cartones.
+
+Qué pasa si cambias el modo de gane?
+
+- Cada vez que cambias el modo de juego o gane, es como si limpiaras todos tus cartones o si tienen maiz por ejemplo, asi que los números en los cartones se desmarcaran pero aún quedaran con los números.
+
+Cómo sabes si el número buscado se encontró en alguno de los cartones?
+
+- Cada vez que el número es encontrado en un cartón puede ser marcado de color gris; si por ejemplo el modo de gane es 4 esquinas
+y falta un solo número para ganar, los  3 números se pondrán en color naranja y se mostrará un mensaje que indica con el nombre o código del carton 
+que esté por ganar.
+
+Cómo sabes que ganaste ?
+- Si el número buscado es el número ganador, se mostrará un mensaje por cada cartón ganador que indica por nombre o código de cartón que ganó en el modo de gane.
+
+Qué pasa al ganar?
+
+-- El mensaje de gane se mantendrá hasta que selecciones cambiar modo de gane o limpiar todos los cartones.
+--- Para el caso de cambiar modo de gane-juego se limpiaran los cartones y los números en cola-historial del juego previo.
+--- Para limpiar los cartones y seguir en el mismo modo de gane, debes is al menú principal en la esquina superior izquierda, esto limpiara los cartones
+y el historial de números pero mantendrá el mismo modo de gane-juego

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self'  'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="lib/mdl/material.min.css">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Uses a header that contracts as the page scrolls down. -->
+        <style>
+            .demo-layout-waterfall .mdl-layout__header-row .mdl-navigation__link:last-of-type  {
+                padding-right: 0;
+            }
+        </style>
+        <title>Bingo!!!</title>
+    </head>
+    <!--<body ng-app="starter" onload="onDocLoad()" onresize="onResize()">-->
+    <body ng-app="starter">
+
+        <!-- snackbar start. -->
+        <div id="snackbar-messages" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+        <!-- snackbar end. -->
+        <!-- Modals start. -->
+        <div class="modal fade" id="modal-new-carton" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &#xD7;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Nuevo Cart&#xF3;n
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row"><div class="col-xs-12 col-md-12">
+                                <div style="display: none;" id="alert-new-carton" class="alert alert-dismissable alert-success">
+
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                        &#xD7;
+                                    </button>
+                                    <div class="alert-content">
+                                    </div>
+                                </div>
+                                <form id="form-new-carton">
+                                    <div class="form-group">
+                                        <label><strong>Nombre o c&#xF3;digo del cart&#xF3;n:</strong></label>
+                                        <input type="text" id="new-nombre" class="form-control">
+                                    </div>
+                                    <div style="display:none;">
+                                        <div class="form-group">
+                                            <label><strong>N&#xFA;mero de Filas:</strong></label>
+                                            <input type="number" value="5" id="new-num-filas" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>N&#xFA;mero de Columnas:</strong></label>
+                                            <input type="number" value="5" id="new-num-columnas" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default navbar-left" data-dismiss="modal">
+                            Cancelar
+                        </button> 
+                        <button onclick="create_new_carton();" type="button" class="btn btn-primary navbar-left">
+                            Crear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ModalMensaje" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&#xD7;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Advertencia</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="mensaje_cancelar" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button id="mensaje_aceptar" type="button" class="btn btn-primary">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modals end.--> 
+        <!--Always shows a header, en in smaller screens.--> 
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row principal-header">
+                    <!--<div class="mdl-layout-spacer"></div>-->
+
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10">
+                            <div id="content-text_gane-linea-columna" style="display: none;">
+                                <div class="wrapper pull-right">
+                                    <button id='edit-specific' class="mdl-button mdl-js-button mdl-button--icon">
+                                        <!--<i class="material-icons">&#xE254;</i>-->
+                                        <img src="img/icons/ic_mode_edit_white_24px.svg"/>
+                                    </button>
+                                    <ul  class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                         for="edit-specific">
+                                        <li data-name='1' class="mdl-menu__item" id="tipogane-especifico-1">
+                                            Linea 1
+                                        </li>
+                                        <li data-name='2' class="mdl-menu__item" id="tipogane-especifico-2">
+                                            Linea 2
+                                        </li>
+                                        <li data-name='3' class="mdl-menu__item" id="tipogane-especifico-3">
+                                            Linea 3
+                                        </li>
+                                        <li data-name='4' class="mdl-menu__item" id="tipogane-especifico-4">
+                                            Linea 4
+                                        </li>
+                                        <li data-name='5' class="mdl-menu__item" id="tipogane-especifico-5">
+                                            Linea 5
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span id="text_gane-linea-columna" data-tipo_gane_especifico="tipogane-especifico-1" class="mdl-layout-title center pull-right">1</span>
+                            </div>
+                            <!--Title--> 
+                            <span id="btn-gane" data-tipo_gane="tipogane-completo" class="mdl-layout-title center pull-right">Cart&oacute;n completo</span>
+                        </div>
+                        <div class="col-xs-2 col-md-2">
+                            <!--Right aligned menu below button--> 
+                            <div id="content-tipo-gane" class="wrapper pull-right">
+                                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                                    <!--<i class="material-icons">&#xE5D4;</i>-->
+                                    <img src="img/icons/ic_more_vert_white_24px.svg"/>
+                                </button>
+                                <ul  class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                     for="demo-menu-lower-right">
+                                    <li data-name='Cart&#xF3;n Completo ' class="mdl-menu__item" id="tipogane-completo" >
+                                        Cart&#xF3;n Completo
+                                    </li>
+                                    <li data-name='4 Esquinas ' class="mdl-menu__item" id="tipogane-4esquinas">
+                                        4 Esquinas
+                                    </li>
+                                    <li data-name='Linea ' class="mdl-menu__item" id="tipogane-linea">
+                                        Linea espec&#xED;fica
+                                    </li>
+                                    <li data-name='Columna ' class="mdl-menu__item" id="tipogane-columna">
+                                        Columna espec&#xED;fica
+                                    </li>
+                                    <li data-name='Cualquier Linea ' class="mdl-menu__item" id="tipogane-cualquier-linea">
+                                        Cualquier Linea
+                                    </li>
+                                    <li data-name='Cualquier Linea Horizontal ' class="mdl-menu__item" id="tipogane-linea-horizontal">
+                                        Cualquier Linea Horizontal
+                                    </li>
+                                    <li data-name='Cualquier Linea Vertical ' class="mdl-menu__item" id="tipogane-linea-vertical">
+                                        Cualquier Linea Vertical
+                                    </li>
+                                    <li data-name='Cualquier Diagonal ' class="mdl-menu__item" id="tipogane-cualquier-diagonal" title="Cualquier linea">
+                                        Cualquier Diagonal
+                                    </li>
+                                    <li data-name='Linea Diagonal SI-ID ' class="mdl-menu__item" id="tipogane-linea-diagonal-si-id" title="Linea que va desde la esquina superior izquierda a la esquina inferior derecha">
+                                        Linea Diagonal SI-ID
+                                    </li>
+                                    <li data-name='Linea Diagonal II-SD ' class="mdl-menu__item" id="tipogane-linea-diagonal-ii-sd" title="Linea que va desde la esquina inferior izquierda a la esquina superior derecha">
+                                        Linea Diagonal II-SD
+                                    </li>
+                                    <li data-name='En x ' class="mdl-menu__item" id="tipogane-en-x">
+                                        En x
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Bottom row, not visible on scroll--> 
+                <div class="mdl-layout__header-row search-header">
+
+                    <div class="row">
+                        <div class="col-xs-10 col-md-10 no-padding">
+
+                            <!--Numeric Textfield with Floating Label--> 
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input id="inputNumber" class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="inputNumber">Ingrese un n&uacute;mero...</label>
+                                <span class="mdl-textfield__error">Input is not a number!</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-md-2">
+                            <div id="wrap-search">
+                                <label id="btn-search" class="mdl-button mdl-js-button mdl-button--icon" onclick="add_new_number();">
+                                    <!--<i class="material-icons">&#xE8B6;</i>-->
+                                    <img src="img/icons/ic_search_white_24px.svg"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Men&uacute;</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="#modal-new-carton" role="button" data-toggle="modal">Crear Nuevo Carton</a>
+                    <a class="mdl-navigation__link" href="#" id="btnLimpiarCartones">Limpiar cartones</a>
+                    <a class="mdl-navigation__link" href="#" id="btnEliminarCartones">Eliminar cartones</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <!--Your content goes here--> 
+                    <div class="row container-fluid">
+                        <div id="contentAlertGeneral" class="col-md-12">
+
+                        </div>
+                    </div>
+
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#cartones-panel" class="mdl-tabs__tab is-active">Cartones</a>
+                            <a href="#panel-lista-numeros" class="mdl-tabs__tab">N&#xFA;meros en cola</a>
+                        </div>
+
+                        <div class="mdl-tabs__panel is-active" id="cartones-panel">
+                            <div id="p1" class="tab-divider"></div>
+
+                            <!--                            <div id="main" ng-controller="CameraCtrl">
+                                                            <button class="button button-full button-assertive" ng-click="takePhoto()">
+                                                                Take Photo
+                                                            </button>
+                                                            <button class="button button-full button-assertive" ng-click="choosePhoto()">
+                                                                Choose Photo
+                                                            </button>
+                                                            <img id="pic" ng-show="imgURI" ng-src="{{imgURI}}" style="text-align: center">
+                                                            <img id="pic" src="img/bingo-board.jpeg">
+                                                            <div id="transcription">hola mundo</div>
+                                                        </div>-->
+                            <div id="cartones-content" class="row">
+
+                            </div>
+                        </div>
+                        <div class="mdl-tabs__panel" id="panel-lista-numeros">
+                            <div id="p2" class="tab-divider"></div>
+                            <ul id="lista-numeros" class="list-unstyled">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <div class="float-button hide-on-keyboard-open">
+                <span class="height-fix">
+                    <a  class="content" href="#modal-new-carton" role="button" data-toggle="modal">
+                        <img src="img/icons/ic_add_white_36px.svg"/>
+                    </a>
+                </span>
+            </div>
+
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+        <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+        
+        <script src="js/app.js"></script>
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="lib/mdl/material.min.js"></script>
+        <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+        <!--<script src="lib/ocrad.js-master/ocrad.js"></script>-->
+                <script src="js/menssages.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/bingo.js"></script>
+        <script src="js/adMob.js"></script>
+        <script src="cordova.js"></script>
+
+    </body>
+</html>

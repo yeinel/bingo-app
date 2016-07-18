@@ -1,0 +1,254 @@
+/*# Empty CSS file for your own CSS*/
+
+
+/*Estilos para el carton*/
+.carton-content{
+    padding: 2%;
+}
+.carton-content fieldset{
+    border: 1px solid rgba(128,128,128,0.7);
+    border-radius: 5px 5px 10px;
+    -webkit-border-radius: 5px 5px 10px;
+    -moz-border-radius: 5px 5px 10px;
+    -o-border-radius: 5px 5px 10px;
+    /*padding: 1%;*/
+}
+
+fieldset .toolbar{
+    background: rgba(0,0,0,0.08);
+    border-radius: 5px 5px 0px 0px;
+}
+.toolbar .mdl-layout-title{
+    line-height: 40px;
+    left: 10px;
+}
+
+
+.carton-content fieldset .row{
+    margin-bottom: 5px;
+}
+
+
+.carton-content input[type="number"]{
+    width:100%;
+    height:100%;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    background: #fff;
+}
+.carton-content .warning input[type="number"]{
+    background-color: #fcf8e3;
+}
+.carton-content .success input[type="number"] {
+    background-color: #dff0d8;
+}
+.carton-content .active input[type="number"] {
+    background-color: #f5f5f5;
+}
+
+.carton-content td{
+    text-align: center;
+}
+
+.mtop10{
+    margin-top: 10px;
+}
+
+<!-- fix ionic -->
+.container-fluid{
+    padding-right: 0 !important; 
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important; 
+}
+
+.row{
+    padding:0 !important;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 100%;
+}
+.col-md-12{
+    padding-right: 0px !important;
+    padding-left: 0px !important; 
+}
+
+
+
+.mdl-textfield{
+    width: 100%;
+}
+
+.mdl-layout{
+    display: block;
+}
+.mdl-layout--fixed-header>.mdl-layout__header{
+    display: block;
+}
+
+.mdl-layout__header-row{
+    height: 40px;
+    padding: 0 16px 0 72px;
+}
+.search-header{
+    padding-left: 40px;
+    padding-right: 24px;
+    height: 45px;
+}
+
+#btn-gane, #text_gane-linea-columna{
+    line-height: 50px;
+    height: 40px;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#edit-specific,#text_gane-linea-columna{
+    margin-left: 5px;
+}
+#edit-specific{
+    margin-right: 15px;
+    height: 40px;
+    width: 40px;
+}
+
+#btn-search{
+    height: 100%;
+    width: 100%;
+}
+.no-padding{
+    padding: 0;
+}
+main{
+    top:110px;
+}
+
+header{
+    position: fixed;
+    width:100%;
+    top: 0px;
+    margin: 0px;
+    left: 0px;
+}
+.principal-header{
+    padding-top: 6px;
+    height: 40px;
+    /*margin-right: 28px;*/
+    padding-right: 0px;
+}
+
+.mdl-textfield__input{
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.mdl-textfield__label{
+    color: rgba(255,255,255,0.4);
+}
+
+.mdl-menu__container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 300px !important;
+}
+
+.mdl-layout__drawer{
+    position: fixed;
+}
+.mdl-layout__obfuscator{
+    height: 150%;
+}
+
+#contentAlertGeneral{
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    position: fixed;
+    top: 95px;
+    z-index: 999;
+}
+
+.table-hover>tbody>tr:hover{
+    background-color: #fff;
+}
+
+#content-tipo-gane{
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    font-size: 26px;
+    height: 40px;
+    width: 40px;
+}
+
+#content-tipo-gane button{
+    width: 100%;
+    height: 100%;
+}
+
+div#wrap-search{
+    height: 55px;
+    width: 48px;
+    text-align: center;
+    padding-top: 18px;
+}
+
+.mdl-button--icon{
+    border-radius: 20%;
+}
+
+.mdl-layout__drawer-button{
+    background: url('../img/icons/ic_menu_white_24px.svg') no-repeat center;
+
+}
+.mdl-layout__drawer-button .material-icons{
+    display: none;
+}
+
+/*//floal bottom*/
+
+.float-button {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-border-radius: 0 3px 10px 0 rgba(0, 0, 0, 0.3), 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 0 3px 10px 0 rgba(0, 0, 0, 0.3), 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3), 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  width: 30px;
+  padding: 30px;
+  font-size: 40px;
+  background: rgba(63,81,181,0.9);
+  position: fixed;
+  bottom: 19px; /* Adjust to where you want it */
+  right: 19px; /* Adjust to where you want it */
+  z-index: 9999;
+  outline: none;
+}
+
+.float-button .height_fix {
+  margin-top: 100%;
+  outline: none;
+}
+
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -20px; /* Note, this must be half the font size */
+  outline: none;
+  /*color: $light;*/
+}
+.mdl-navigation__link{
+    outline: none !important;
+}
+
+#lista-numeros{
+    padding-bottom: 100px;
+}
+
+#lista-numeros li{
+    margin-bottom: 10px;
+}
